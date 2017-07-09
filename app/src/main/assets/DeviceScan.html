@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oymotion_gForce</title>
+    <style type="text/css" media="all">
+#header {
+	position:absolute; z-index:1;
+	top:0; left:0;
+	width:100%;
+	height:45px;
+	line-height:40px;
+	background-color:#007FFF;
+	/*background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));*/
+	/*background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+	background-image:-o-linear-gradient(top, #999, #666 2%, #222);*/
+    padding:0 0 0 10px;
+	color:#eee;
+	font-size:20px;
+}
+
+#scan{
+    position:absolute; z-index:2;
+    color:#fff;
+	text-align:right;
+	font-weight:bold;
+    right:10px;
+    font-size:15px;
+}
+
+.name{
+	font-weight:bold;
+}
+
+#divi{
+    position:relative;
+	height:45px;
+	line-height:40px;
+}
+
+#header a {
+	color:#f3f3f3;
+	text-decoration:none;
+	font-weight:bold;
+    }
+
+
+    </style>
+</head>
+<body>
+<div id="divi">
+    <div id="header">连接您的设备</div>
+
+    <div id="scan" onclick="funScan()">
+        停止
+    </div>
+</div>
+<div id="list" class="list-group">
+</div>
+<link rel="stylesheet"
+      href="css/bootstrap.min.css">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+        var div1 = document.getElementById('list');
+        var iniCode = '';
+        var scanStr = '扫描';
+        var size = 1;
+        function funUpdate(){
+            var size = window.device.getDeviceSize();
+             if(size>0){
+                for(var i=0;i<size;i++){
+                    iniCode += '<a href="#" id="'+i+'"class="list-group-item list-group-item-action" onclick="funClick(this)"><table border=0 width="100%"><tr align="center"><td rowspan=2><img src="file:///android_asset/Device.png" width="40" height="40"></td><td class="name">'+window.device.getDeviceName(i)+'</td><td rowspan=2>&nbsp;&nbsp;&nbsp;&nbsp'+window.device.getDeviceRssi(i)+'dBm&nbsp;&nbsp;&nbsp;&nbsp</td></tr><tr align="center"><td>'+window.device.getDeviceAddress(i)+'</td></tr></table></a>';
+                }
+            }
+            div1.innerHTML = iniCode;
+            iniCode = '';
+        }
+
+        function funScan(){
+            var str = document.getElementById('scan');
+            if(scanStr=='扫描'){
+                scanStr =  '停止';
+                window.device.isScanStop(1);
+            }else{
+                scanStr = '扫描';
+                window.device.isScanStop(2);
+            }
+            str.innerHTML = scanStr;
+        }
+
+        function funClear(){
+            div1.innerHTML = initCode;;
+        }
+
+        function funClick(e){
+            window.device.getClickItem(e.id+'');
+        }
+</script>
+</body>
+</html>

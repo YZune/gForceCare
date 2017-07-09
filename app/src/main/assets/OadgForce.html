@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oad_gForce</title>
+    <style type="text/css" media="all">
+#header {
+	position:absolute; z-index:1;
+	top:0; left:0;
+	width:100%;
+	height:45px;
+	line-height:40px;
+	background-color:#222;
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+	background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+	background-image:-o-linear-gradient(top, #999, #666 2%, #222);
+    padding:0 0 0 10px;
+	color:#eee;
+	font-size:18px;
+}
+
+#connect{
+    position:absolute; z-index:2;
+    color:#fff;
+	text-align:right;
+	font-weight:bold;
+    right:10px;
+    font-size:15px;
+}
+
+#divi{
+    position:relative;
+	height:45px;
+	line-height:40px;
+}
+
+#back{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+       width:200px;
+       height:100px;
+       margin-left:-100px;
+       margin-top:-50px;
+       text-align:center;
+}
+
+#tip-pic{
+    margin: 20px 0 0 0;
+	font-weight:bold;
+	text-align:center;
+}
+
+
+
+#tip-progress{
+    margin: 20px 0 0 0;
+	font-weight:bold;
+    text-align:center;
+}
+
+.progress{
+    margin:10px 20px 0 20px;
+}
+
+#preview {
+    margin:50px 0 0 0;
+}
+
+#header div {
+	color:#f3f3f3;
+	text-decoration:none;
+	font-weight:bold;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.5);
+    }
+
+    </style>
+</head>
+<body>
+<div id="divi">
+    <div id="header"><div>OAD_Service</div>
+    </div>
+
+    <div id="connect" onclick="funConnect()">Disconnect</div>
+</div>
+
+<div id="tip-progress">
+    OAD Upgrade Progress
+</div>
+
+<div class="progress">
+    <div id="progress" class="progress-bar" role="progressbar" style="width: 0%;"
+         aria-valuenow="100"
+         aria-valuemin="0" aria-valuemax="100">0%
+    </div>
+</div>
+
+<div id="back">
+    <img id="logo" src="file:///android_asset/Device.png" width="150" height="150" onclick="funSelectUpgrade()">
+    <div id="tip-pic">
+        Click the picture to select the file to upgrade...
+    </div>
+
+</div>
+
+<div>
+    <section id="preview"></section>
+</div>
+
+<link rel="stylesheet"
+      href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/spin.js"></script>
+<script>
+         var iniCode = '';
+         var temp = 0;
+         var scanStr = 'Scan';
+         var size = 0;
+         var progress = document.getElementById('progress');
+
+         $(document).keydown(function(event){
+            if(event.keyCode == 37){
+                funDeleteProgress();
+            }else if (event.keyCode == 39){
+                funAddProgress();
+                }
+          });
+
+        function funSelectUpgrade(){
+            if(temp==0){
+                window.oad.selectFileToUpgrade();
+            }
+        }
+
+        function funUpdateProgress(){
+           temp+=1;
+            if(temp==1){
+                 new Spinner().spin(document.getElementById('preview'));
+            }
+           var oad = window.oad.getOadProgressVal();
+           progress.innerHTML = ''
+           $("div[class=progress-bar]").css("width", oad +"");
+           progress.innerHTML = oad+'';
+           console.log(temp);
+        }
+
+        function funAddProgress(){
+           progress.innerHTML = ''
+           size += 10;
+           $("div[class=progress-bar]").css("width", size + "%");
+           progress.innerHTML =size + "%";
+        }
+
+        function funDeleteProgress(){
+           progress.innerHTML = ''
+           size -= 1;
+           $("div[class=progress-bar]").css("width", size + "%");
+           progress.innerHTML =size + "%";
+        }
+
+        function funConnect(){
+            window.oad.deviceDisConnect();
+        }
+
+</script>
+</body>
+</html>

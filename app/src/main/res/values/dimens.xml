@@ -1,0 +1,39 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="much">20.0dip</dimen>
+    <dimen name="menu_text_size">15dp</dimen>
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+
+    <dimen name="banner_height">150dp</dimen>
+    <dimen name="printWidth">10dp</dimen>
+    <dimen name="printRadius">5dp</dimen>
+    <dimen name="title_height">40dp</dimen>
+    <dimen name="all_select_height">46dp</dimen>
+
+    <dimen name="marginS">4dp</dimen>
+    <dimen name="marginL">8dp</dimen>
+    <dimen name="marginXL">12dp</dimen>
+    <dimen name="marginXXL">16dp</dimen>
+    <dimen name="margin40">40dp</dimen>
+    <dimen name="margin30">30dp</dimen>
+    <dimen name="textXL">14sp</dimen>
+    <dimen name="textXXL">16sp</dimen>
+    <dimen name="textL">14sp</dimen>
+    <dimen name="textS">12sp</dimen>
+    <dimen name="textSS">10sp</dimen>
+    <dimen name="shop_image_height">200dp</dimen>
+    <dimen name="order_list_image_height">80dp</dimen>
+    <dimen name="btn_left_right_padding">25dp</dimen>
+    <dimen name="shop_info_image_height">320dp</dimen>
+    <dimen name="tab_host_image">20dp</dimen>
+    <dimen name="user_header_image">50dp</dimen>
+    <dimen name="splash_video_margin">200dp</dimen>
+
+</resources>

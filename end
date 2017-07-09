@@ -1,0 +1,60 @@
+[33mcommit cf7ff32553888925a52b894940a50cb4fe5e58fa[m
+Merge: 4bb761d af9b89d
+Author: Ao Hu <huao@oymotion.com>
+Date:   Thu Jun 15 11:32:33 2017 +0800
+
+    Merge branch 'huao-softarmband' of 139.196.239.211:gForceApp-dev into huao-softarmband
+
+[33mcommit 4bb761d2c5a6ccf89ae7a0d8eaea196830ff29c6[m
+Author: Ao Hu <huao@oymotion.com>
+Date:   Thu Jun 15 11:22:32 2017 +0800
+
+    gForceOADHtml gForceDataHtml
+
+[33mcommit af9b89dfd3dae0a542db3b9f366977053c9a9e31[m
+Author: Ethan Su <suxiang@oymotion.com>
+Date:   Mon Jun 12 15:15:20 2017 +0800
+
+    Fix problem with gForce R3 OAD
+
+[33mcommit 7a8ec62fc23868fbc5f48a569832f1aeb9a54099[m
+Author: Ethan Su <suxiang@oymotion.com>
+Date:   Fri Jun 9 17:53:15 2017 +0800
+
+    Fix OAD abnormal for gForce R3 OAD
+
+[33mcommit 6e9e6c42c866b153e45421270d673e23e82d7b90[m
+Author: Ao Hu <huao@oymotion.com>
+Date:   Thu Jun 1 14:44:06 2017 +0800
+
+    DeviceScanHTML
+
+[33mcommit c5c46c10a190103b4a1a9273a8adeb32347420d8[m
+Author: Ao Hu <huao@oymotion.com>
+Date:   Tue May 23 15:05:31 2017 +0800
+
+    revise
+
+[33mcommit bbedc39bcd392dc19f0e86e3b41e7bbe8f6151d8[m
+Author: Ao Hu <huao@oymotion.com>
+Date:   Tue May 23 14:56:18 2017 +0800
+
+    gForceApp UI frame
+
+[33mcommit dee6d066dcc33f41de41a22113e08cc2b4f1f3cc[m
+Author: Ao Hu <huao@oymotion.com>
+Date:   Thu May 18 17:00:58 2017 +0800
+
+    test
+
+[33mcommit 5539b04997e9f3ac0be337014a06e03d5d41b4b8[m
+Author: Ao Hu <huao@oymotion.com>
+Date:   Thu May 18 16:34:01 2017 +0800
+
+    gForceApp add 3D gesture display
+
+[33mcommit da268d1be776ec2eabb1991b77e912b872b7290c[m
+Author: Ao Hu <huao@oymotion.com>
+Date:   Thu May 18 16:15:42 2017 +0800
+
+    gForceApp add 3D gesture support

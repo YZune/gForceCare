@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>three.js webgl - guesture</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+			body {
+				background:#777;
+				padding:0;
+				margin:0;
+				font-weight: bold;
+				overflow:hidden;
+			}
+			#info {
+				position: absolute;
+				top: 0px;
+				width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+			}
+			a {
+				color: #ffffff;
+			}
+
+
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+<div id="info">
+    <a href="https://www.oymotion.com" target="_blank">Oymotion</a>
+</div>
+<script src="build/three.js"></script>
+
+<script src="js/ColladaLoader.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/stats.min.js"></script>
+<script src="js/JSONLoader.js"></script>
+<script type="text/javascript" src="js/dat.gui.min.js"></script>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<script>
+			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+			var container, stats, actionState,url,duration;
+			var camera, scene, renderer, controls,clock;
+			var object,action,mixer,texture;
+			var a,b,c,d;
+			var sQa,eQa;
+			var startQa,endQa,currentQa;
+			var bones = [];
+			var loader,bone,plane;
+			var cube;
+
+			var mixer,mesh,skeleton;
+
+		    var fistAction,waveInAction,waveOutAction,shootAction,spreadAction,pinchAction;
+		    var fistObject,waveInObject,waveOutObject,shootObject,spreadObject,pinchObject;
+		    var fistMixer,waveInMixer,waveOutMixer,shootMixer,spreadMixer,pinchMixer;
+			init();
+			animate();
+			function init() {
+				container = document.getElementById( 'container' );
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.set( 0, 0, 0 );
+				scene = new THREE.Scene();
+			    endQa = new THREE.Quaternion();
+			    currentQa = new THREE.Quaternion();
+				state = false;
+                duration = 0.4;
+				clock = new THREE.Clock;
+
+				console.log('12138.....'+1);
+
+
+                // collada
+				loader = new THREE.ColladaLoader();
+				loader.options.convertUpAxis = true;
+				loader.load( 'fist.dae', function ( collada ) {
+					fistObject = collada.scene;
+					object = fistObject;
+					fistObject.scale.set( 0.15, 0.15, 0.15 );
+					fistObject.position.set( 0, 5, -10 );
+                    mixer = new THREE.AnimationMixer( fistObject );
+					fistObject.traverse( function ( child ) {
+						if ( child instanceof THREE.SkinnedMesh ) {
+						    child.rotation.x = -0.8;
+						    child.castShadow = true;
+							var clip = THREE.AnimationClip.parseAnimation( child.geometry.animation, child.geometry.bones );
+							fistAction = mixer.clipAction( clip, child );
+							fistAction.setDuration(duration);
+							action = fistAction;
+						}
+					} );
+					scene.add( fistObject );
+				} );
+
+                console.log('12138.....'+4);
+                // Plane
+				var planceGeometry_x = new THREE.PlaneGeometry(205,240);
+                var planeMaterial_x = new THREE.MeshLambertMaterial({ color: 0xfffffff });
+                var plane_x = new THREE.Mesh(planceGeometry_x, planeMaterial_x);
+                plane_x.rotation.x = -0.5*Math.PI;
+				plane_x.receiveShadow = true;
+				scene.add( plane_x );
+
+				var ambientLight = new THREE.AmbientLight( 0xffffff );
+				scene.add( ambientLight );
+
+			    //initial renderer
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+                renderer.shadowMapEnabled = true;
+				container.appendChild( renderer.domElement );
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function funUpdateQa(){
+			    if(startQa==undefined){
+			        startQa = new THREE.Quaternion(1,0,0,0);
+			    }
+			    endQa.w = window.guesture.getQuaternionW();
+			    endQa.x = window.guesture.getQuaternionX();
+			    endQa.y = window.guesture.getQuaternionY();
+			    endQa.z = window.guesture.getQuaternionZ();
+
+                THREE.Quaternion.slerp(startQa,endQa,fistObject.quaternion,1);
+                startQa = endQa;
+			}
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+
+	        function funWaveOut(){
+			    fistAction.stop();
+			    fistAction.loop = THREE.ONCE;
+                fistAction.play();
+			}
+
+			function funRelax(){
+			    if(fistAction!== undefined){
+                    fistAction.fadeOut(0.1);
+			    }
+			}
+
+			function animate() {
+				requestAnimationFrame( animate );
+				render();
+			}
+
+			function render() {
+			    var delta = clock.getDelta();
+				if ( mixer !== undefined) {
+					mixer.update( delta );
+				}
+				renderer.render( scene, camera );
+			}
+</script>
+</body>
+</html>

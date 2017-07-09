@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="gold">#FFD700</color><!--金色 -->
+    <color name="transparent">#00000000</color>
+    <color name="gray_pressed">#ffb5b5b6</color>
+    <color name="web">#000000</color>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="slidingtab_indicatorcolor">#0084FF</color>
+
+
+    <color name="bg_window">#ffe5e5e5</color>
+    <color name="bg_page">#f4f4f4</color>
+    <color name="bg_tab_pressed">#6633b5e5</color>
+    <color name="bg_tab_pressed2">#ff3898ff</color>
+    <!-- 钃濊壊 -->
+
+    <color name="txt_title">#ff333333</color>
+    <color name="txt_small">#ff7a7a7a</color>
+    <color name="txt_big">#ff717171</color>
+    <color name="item_divider">#ffd7d7d7</color>
+    <color name="list_pressed">#60c4c4c4</color>
+    <color name="progress">#0294f0</color>
+    <color name="select_dialog">#3366CC</color>
+    <color name="menu_bg_normal">#f0f1f3</color>
+    <color name="menu_bg_press">#cecece</color>
+    <color name="bg_toast">#80000000</color>
+    <color name="line">#7a7a7a</color>
+    <color name="text_black">#211d1d</color>
+    <color name="text_red">#c20000</color>
+    <color name="text_gray">#ff717171</color>
+    <color name="gray_line">#e6e6e6</color>
+
+    <color name="bg_white">#ffffff</color>
+    <color name="commo_text_color">#666666</color>
+    <color name="black_text_color">#211d1d</color>
+    <color name="grid_item_line">#ffd3dde6</color>
+    <color name="alpha_text_color">#999999</color>
+</resources>

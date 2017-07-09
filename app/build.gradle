@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        applicationId "com.sample.hrv"
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionCode
+        6
+
+        versionName
+        "2.1.2"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // Android annotations
+    // Material design
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile 'com.android.support:support-annotations:22.2.1'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+}
+
+
